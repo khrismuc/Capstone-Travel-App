@@ -41,7 +41,7 @@ router.post("/getWeather", async (req, res) => {
         lng = geoData.geonames[0].lng;
     }
     catch (e) {
-        errors.geoname = e.message;
+        reply.errors.geoname = e.message;
     }
 
     // call to WeatherBit API
@@ -56,7 +56,7 @@ router.post("/getWeather", async (req, res) => {
             reply.lowTemp = lowTemp;
         }
         catch (e) {
-            errors.weatherBit = e.message;
+            reply.errors.weatherBit = e.message;
         }
     }
 
@@ -67,7 +67,7 @@ router.post("/getWeather", async (req, res) => {
         reply.image = pixaData.hits[0].webformatURL;
     }
     catch (e) {
-        errors.pixaBay = e.message;
+        reply.errors.pixaBay = e.message;
     }
 
     console.log(reply);
